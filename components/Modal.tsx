@@ -8,7 +8,7 @@ import {
 } from '@heroicons/react/outline'
 import MuiModal from '@mui/material/Modal'
 import { FaPlay } from 'react-icons/fa'
-import ReactPlayer from 'react-player/lazy'
+import ReactPlayer from 'react-player'
 import { useRecoilState } from 'recoil'
 import { modalState, movieState } from '../atoms/modalAtom'
 import { Element, Genre } from '../typings'
