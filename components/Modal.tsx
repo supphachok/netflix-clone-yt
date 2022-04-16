@@ -30,10 +30,7 @@ function Modal() {
         }/${movie?.id}?api_key=${
           process.env.NEXT_PUBLIC_API_KEY
         }&language=en-US&append_to_response=videos`
-      )
-        .then((response) => response.json())
-        .catch((err) => console.log(err))
-
+      ).then((response) => response.json())
       if (data?.videos) {
         const index = data.videos.results.findIndex(
           (element: Element) => element.type === 'Trailer'
@@ -50,18 +47,19 @@ function Modal() {
 
   const handleClose = () => {
     setShowModal(false)
+    setMovie(null)
   }
 
   return (
     <MuiModal
       open={showModal}
       onClose={handleClose}
-      className="fixex !top-7 left-0 right-0 z-50 mx-auto w-full max-w-5xl overflow-hidden overflow-y-scroll rounded-md scrollbar-hide"
+      className="fixed !top-7 left-0 right-0 z-50 mx-auto w-full max-w-5xl overflow-hidden overflow-y-scroll rounded-md scrollbar-hide"
     >
       <>
         <button
+          className="modalButton absolute right-5 top-5 !z-40 h-9 w-9 border-none bg-[#181818] hover:bg-[#181818]"
           onClick={handleClose}
-          className="modalButton absolute right-5 top-5 !z-40 h-9 w-9 border-none bg-[#181818]"
         >
           <XIcon className="h-6 w-6" />
         </button>
