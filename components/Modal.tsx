@@ -8,18 +8,17 @@ import {
 } from '@heroicons/react/outline'
 import MuiModal from '@mui/material/Modal'
 import { FaPlay } from 'react-icons/fa'
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/lazy'
 import { useRecoilState } from 'recoil'
 import { modalState, movieState } from '../atoms/modalAtom'
 import { Element, Genre } from '../typings'
 
 function Modal() {
-  const [showModal, setShowModal] = useRecoilState(modalState)
   const [movie, setMovie] = useRecoilState(movieState)
-  const [data, setData] = useState()
   const [trailer, setTrailer] = useState('')
-  const [genres, setGenres] = useState<Genre[]>([])
+  const [showModal, setShowModal] = useRecoilState(modalState)
   const [muted, setMuted] = useState(true)
+  const [genres, setGenres] = useState<Genre[]>([])
 
   useEffect(() => {
     if (!movie) return
